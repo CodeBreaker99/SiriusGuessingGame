@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirius Bandy Prediction Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #004080;
+        }
+
+        #prediction-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 64, 128, 0.1);
+        }
+
+        #team-logos {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #team-logos img {
+            max-width: 100px;
+            height: auto;
+        }
+
+        #prediction-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            font-weight: bold;
+            color: #004080;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #004080;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #prediction-result {
+            margin-top: 20px;
+            color: #004080;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="prediction-container">
+        <div id="team-logos">
+            <!-- Replace "URL_OF_SIRIUS_LOGO" with the actual URL of the Sirius Bandy logo -->
+            <img src="C:\Users\siriu\Downloads\ik_sirius_logo_mobile.png" alt="Sirius Bandy Logo">
+            <img src="C:\Users\siriu\Downloads\vsk_logo_160px.png" alt="Opponent Logo">
+        </div>
+
+        <h1>Sirius Bandy Prediction Game</h1>
+
+        <div id="prediction-form">
+            <label for="predictedScore">Predict the score (e.g., 3-2):</label>
+            <input type="text" id="predictedScore" placeholder="Enter score">
+            <button onclick="submitPrediction()">Submit Prediction</button>
+        </div>
+
+        <div id="prediction-result"></div>
+    </div>
+
+    <script>
+        function submitPrediction() {
+            // Get the predicted score from the input field
+            const predictedScore = document.getElementById("predictedScore").value;
+
+            // Validate the input format (simple validation for demonstration purposes)
+            const scoreRegex = /^\d+-\d+$/;
+            if (!scoreRegex.test(predictedScore)) {
+                alert("Please enter a valid score format (e.g., 3-2).");
+                return;
+            }
+
+            // Simulate checking the prediction against the actual result (replace with actual logic)
+            const actualResult = getActualResult(); // Replace this function with actual data retrieval
+
+            // Display the result to the user
+            displayResult(predictedScore, actualResult);
+        }
+
+        function getActualResult() {
+            // Simulate getting the actual result (replace with actual data retrieval logic)
+            // For simplicity, let's assume a random result for demonstration purposes
+            const possibleResults = ["2-1", "3-0", "1-2", "0-0"];
+            return possibleResults[Math.floor(Math.random() * possibleResults.length)];
+        }
+
+        function displayResult(predictedScore, actualResult) {
+            const resultContainer = document.getElementById("prediction-result");
+            resultContainer.innerHTML = `
+                <p>Your prediction: ${predictedScore}</p>
+                <p>Actual result: ${actualResult}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
